@@ -73,15 +73,18 @@ class _AppMainPageState extends State<AppMainPage> {
 
   @override
   Widget build(BuildContext context) {
+    final currentWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: currentWidth < 600 ? Colors.brown : Colors.white,
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTappedBar,
         currentIndex: _currentIndex,
-        backgroundColor: Colors.brown,
+        backgroundColor: currentWidth < 600 ? Colors.brown : Colors.white,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color(0xFFFFAB95),
-        unselectedItemColor: Colors.white,
+        selectedItemColor: 
+            currentWidth < 600 ? const Color(0xFFFFAB95) : Colors.black,
+        unselectedItemColor: currentWidth < 600 ? Colors.white : Colors.brown,
         items: const [
           BottomNavigationBarItem(
               icon: Icon(
